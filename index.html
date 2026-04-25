@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Script Shop</title>
+  <meta name="referrer" content="no-referrer">
+  <style>
+    body { margin: 0; background: #212529; color: white; text-align: center; font-family: sans-serif; }
+    .reader { max-width: 800px; margin: auto; }
+    .controls { background: #212529; padding: 10px; position: sticky; display: flex; justify-content: center; gap: 10px; }
+    button, select { padding: 10px; background: #DD9933; color: #FFFFFF; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;}
+    select { background: #333; }
+    #manga-container img { width: 100%; display: block; }
+    #chapter-title { padding: 15px; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="reader">
+    <h2 id="chapter-title">Loading...</h2>
+    <select id="chapter-select" onchange="jumpToChapter(this.value)"></select>
+    <div class="controls">
+      
+      <button onclick="prevChapter()">⬅ Previous Chapter</button>
+      <button onclick="nextChapter()">Next Chapter ➡</button>
+    </div>
+
+    
+    <div id="manga-container"></div>
+
+    <div class="controls" style="position: static; margin: 20px 0;">
+      <button onclick="prevChapter()">⬅ Previous Chapter</button>
+      <button onclick="nextChapter()">Next Chapter ➡</button>
+    </div>
+  </div>
+
+  <script>
+    // --- CONFIGURATION WITH SKIP LIST ---
+    const mangaConfig = {
+        "Chapter 1": {
+          base: "https://j24n.wowpic5.store/ii/bEqPbYfoPT0Gm03leiqfhBpAxq0Fb/",
+          pages: 89,
+          ext: ".webp",
+          digits: 2,
+          skip: []
+        },
+        "Chapter 2": {
+                base: "https://80pd.wowpic1.store/ii/bEqPbYfoOT0Gmk3lG0qfhBpAxq0Rc/",
+                pages: 80,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 3": {
+                base: "https://ek10.wowpic3.store/ii/bEqPbYfoNT0Gmz3lQlKfsBps3qkpd/",
+                pages: 28,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 4": {
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoKT0GmknlOgafhBpAxrEVY/",
+                pages: 82,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 5": {
+                base: "https://ek10.wowpic4.store/ii/bEqPbYfoMT0GmzHkciafsBps3q0Ba/",
+                pages: 25,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 6": {
+                base: "https://j24n.wowpic2.store/ii/bEqPbYfoKT0GmwHkRgqfqD5cxrENb/",
+                pages: 28,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 7": {
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoKT0GmwXlOhqfhBpAxrUdZ/",
+                pages: 87,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 8": {
+                base: "https://ek10.wowpic2.store/ii/bEqPbYfoOT0GmwHlBmqfhBpAxrUpZ/",
+                pages: 81,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 9": {
+                base: "https://ek10.wowpic5.store/ii/bEqPbYfoPT0GmknlQkKfqD5cxrEVa/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 10": {
+                base: "https://80pd.wowpic3.store/ii/bEqPbYfoKT0Gm0XlNhqfqD5cxrERb/",
+                pages: 29,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 11": {
+                base: "https://jdpw.wowpic3.store/ii/bEqPbYfoOT0Gmw3lSiafhBpAxrkta/",
+                pages: 83,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 12": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoMT0Gm03lahqfrD5UzrUFU/",
+                pages: 29,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 13": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoMT0Gm0XlHiafhBpAxr0dZ/",
+                pages: 77,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 14": {
+                base: "https://j24n.wowpic2.store/ii/bEqPbYfoKT0GmxnlMgafhBpAxoEFd/",
+                pages: 84,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+       // "Chapter 15": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 16": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 17": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 18": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 19": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 20": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 21": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 22": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 23": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 24": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 25": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 26": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 27": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 28": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 29": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 30": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 31": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 32": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 33": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 34": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 35": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 36": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 37": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 38": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 39": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 40": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 41": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 42": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 43": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 44": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 45": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 46": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 47": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 48": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 49": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 50": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 51": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 52": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 53": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 54": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 55": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 56": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 57": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 58": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 59": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 60": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 61": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 62": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 63": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 64": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 65": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 66": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 67": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 68": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 69": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 70": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 71": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 72": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 73": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 74": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 75": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 76": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 77": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 78": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 79": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 80": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 81": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 82": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 83": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 84": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 85": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 86": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 87": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 88": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 89": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 90": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 91": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 92": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 93": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 94": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+       // "Chapter 95": {
+       //         base: "",
+       //         pages: ,
+       //         ext: ".",
+       //         digits: ,
+       //         skip: []
+       //       },
+    };
+
+    let chapterKeys = Object.keys(mangaConfig);
+    let currentChapterIndex = parseInt(localStorage.getItem("mangaIndex")) || 0;
+
+    function loadChapter() {
+      let chapterName = chapterKeys[currentChapterIndex];
+      let config = mangaConfig[chapterName];
+      let container = document.getElementById("manga-container");
+      
+      document.getElementById("chapter-title").innerText = chapterName;
+      document.getElementById("chapter-select").value = currentChapterIndex;
+      container.innerHTML = ""; 
+
+      for (let i = 1; i <= config.pages; i++) {
+        
+        // --- OPTION 2 LOGIC: CHECK SKIP LIST ---
+        if (config.skip && config.skip.includes(i)) {
+          console.log(`Skipping page: ${i}`);
+          continue; // This stops the loop for this number and moves to the next
+        }
+
+        let img = document.createElement("img");
+        let pageNum = i.toString().padStart(config.digits, '0');
+        
+        img.src = config.base + pageNum + config.ext;
+        img.loading = "lazy";
+        
+        // We still keep the error check just in case!
+        img.onerror = function() { this.remove(); };
+        
+        container.appendChild(img);
+      }
+
+      localStorage.setItem("mangaIndex", currentChapterIndex);
+      window.scrollTo(0, 0);
+    }
+
+    // Navigation Helpers
+    function init() {
+      const select = document.getElementById("chapter-select");
+      chapterKeys.forEach((name, index) => {
+        let opt = document.createElement("option");
+        opt.value = index;
+        opt.innerText = name;
+        select.appendChild(opt);
+      });
+      loadChapter();
+    }
+
+    function jumpToChapter(index) { currentChapterIndex = parseInt(index); loadChapter(); }
+    function nextChapter() { if(currentChapterIndex < chapterKeys.length - 1) { currentChapterIndex++; loadChapter(); } }
+    function prevChapter() { if(currentChapterIndex > 0) { currentChapterIndex--; loadChapter(); } }
+
+    init();
+  </script>
+</body>
+</html>
