@@ -19,7 +19,10 @@
 
   <div class="reader">
     <h2 id="chapter-title">Loading...</h2>
+    <div class="controls">
+    <div class="controls"><a href="https://nova76826-hue.github.io/Project/"><button style="border-radius: 20px;">&#8962;</button></a></div>
     <select id="chapter-select" onchange="jumpToChapter(this.value)"></select>
+    </div>
     <div class="controls">
       
       <button onclick="prevChapter()">⬅ Previous Chapter</button>
@@ -39,71 +42,71 @@
     // --- CONFIGURATION WITH SKIP LIST ---
     const mangaConfig = {
         "Chapter 1": {
-          base: "https://j24n.wowpic5.store/ii/bEqPbYfoPT0Gm03leiqfhBpAxq0Fb/",
-          pages: 89,
-          ext: ".webp",
-          digits: 2,
-          skip: []
-        },
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoKT0GmyHkamqfrDpc5r0Nf/",
+                pages: 21,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
         "Chapter 2": {
-                base: "https://80pd.wowpic1.store/ii/bEqPbYfoOT0Gmk3lG0qfhBpAxq0Rc/",
-                pages: 80,
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoOT0GmznlB1afrDpc5oEdZ/",
+                pages: 10,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 3": {
-                base: "https://ek10.wowpic3.store/ii/bEqPbYfoNT0Gmz3lQlKfsBps3qkpd/",
-                pages: 28,
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoOT0GmznlB1afrDpc5oEdZ/",
+                pages: 10,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 4": {
-                base: "https://jloo.wowpic4.store/ii/bEqPbYfoKT0GmknlOgafhBpAxrEVY/",
-                pages: 82,
+                base: "https://ek10.wowpic2.store/ii/bEqPbYfoOT0Gml3lE1qfrDpc4qkJa/",
+                pages: 12,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 5": {
-                base: "https://ek10.wowpic4.store/ii/bEqPbYfoMT0GmzHkciafsBps3q0Ba/",
-                pages: 25,
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoOT0Gml3lch6frDpc4q0Zb/",
+                pages: 11,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 6": {
-                base: "https://j24n.wowpic2.store/ii/bEqPbYfoKT0GmwHkRgqfqD5cxrENb/",
-                pages: 28,
+                base: "https://jloo.wowpic2.store/ii/bEqPbYfoNT0Gm2HlYjafrDpc4rEtU/",
+                pages: 12,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 7": {
-                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoKT0GmwXlOhqfhBpAxrUdZ/",
-                pages: 87,
+                base: "https://jdpw.wowpic1.store/ii/bEqPbYfoOT0Gm23lPlKfrDpc4rkJc/",
+                pages: 11,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 8": {
-                base: "https://ek10.wowpic2.store/ii/bEqPbYfoOT0GmwHlBmqfhBpAxrUpZ/",
-                pages: 81,
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoNT0Gmz3lfiKfrDpc4r0VZ/",
+                pages: 11,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 9": {
-                base: "https://ek10.wowpic5.store/ii/bEqPbYfoPT0GmknlQkKfqD5cxrEVa/",
-                pages: 35,
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoKT0Gm0nlAiqfrDpc4oUZU/",
+                pages: 12,
                 ext: ".webp",
                 digits: 2,
                 skip: []
               },
         "Chapter 10": {
-                base: "https://80pd.wowpic3.store/ii/bEqPbYfoKT0Gm0XlNhqfqD5cxrERb/",
-                pages: 29,
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoKT0Gmy3kbhafrDpYxqEte/",
+                pages: 11,
                 ext: ".webp",
                 digits: 2,
                 skip: []
@@ -192,517 +195,517 @@
                 digits: 2,
                 skip: []
               },
-       // "Chapter 23": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 24": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 25": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 26": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 27": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 28": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 29": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 30": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 31": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 32": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 33": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 34": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 35": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 36": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 37": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 38": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 39": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 40": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 41": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 42": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 43": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 44": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 45": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 46": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 47": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 48": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 49": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 50": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 51": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 52": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 53": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 54": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 55": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 56": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 57": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 58": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 59": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 60": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 61": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 62": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 63": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 64": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 65": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 66": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 67": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 68": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 69": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 70": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 71": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 72": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 73": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 74": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 75": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 76": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 77": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 78": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 79": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 80": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 81": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 82": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 83": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 84": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 85": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 86": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 87": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 88": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 89": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 90": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 91": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 92": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 93": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 94": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
-       // "Chapter 95": {
-       //         base: "",
-       //         pages: ,
-       //         ext: ".",
-       //         digits: ,
-       //         skip: []
-       //       },
+        "Chapter 23": {
+                base: "https://ek10.wowpic5.store/ii/bEqPbYfoPT0Gmz3lchqfhBpAwqktd/",
+                pages: 105,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 24": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoKT0Gm23lAgafhBpAwq0ZV/",
+                pages: 86,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 25": {
+                base: "https://ek10.wowpic2.store/ii/bEqPbYfoOT0Gmy3kc1afhBpAwq0tV/",
+                pages: 93,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 26": {
+                base: "https://jloo.wowpic5.store/ii/bEqPbYfoNT0Gm1nlBl6fhBpAwrEBV/",
+                pages: 96,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 27": {
+                base: "https://ek10.wowpic3.store/ii/bEqPbYfoPT0Gm0XlLg6fhBpAwrEpe/",
+                pages: 89,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 28": {
+                base: "https://jloo.wowpic2.store/ii/bEqPbYfoOT0GmkXlY06fhBpAwrUdY/",
+                pages: 98,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 29": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoNT0GmxXkahafhBpAwrkNc/",
+                pages: 84,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 30": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoPT0GmwHlNgafrD5U1rkJb/",
+                pages: 26,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 31": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoKT0Gmx3lGl6frD5U1rkVa/",
+                pages: 28,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 32": {
+                base: "https://jloo.wowpic3.store/ii/bEqPbYfoNT0GmxXkZmafhBpAwrkVU/",
+                pages: 97,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 33": {
+                base: "https://ek10.wowpic3.store/ii/bEqPbYfoOT0GmlHlGi6fhBpAwr0ZV/",
+                pages: 130,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 34": {
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoOT0GmlXlQmKfhBpAwr0Rf/",
+                pages: 82,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 35": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoOT0GmlHlHh6fhBpAwoEdf/",
+                pages: 100,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 36": {
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoOT0Gm13lPk6frD5U0qEpY/",
+                pages: 25,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 37": {
+                base: "https://jdpw.wowpic4.store/ii/bEqPbYfoOT0GmznkYiqfhBpAwoUNZ/",
+                pages: 107,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 38": {
+                base: "https://80pd.wowpic2.store/ii/bEqPbYfoNT0Gm0HlbhKfhBpAwoURV/",
+                pages: 95,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 39": {
+                base: "https://j24n.wowpic3.store/ii/bEqPbYfoOT0GmxXkRl6fhBpAzqEZf/",
+                pages: 97,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 40": {
+                base: "https://jdpw.wowpic1.store/ii/bEqPbYfoOT0Gml3lYiKfhBpAzqUBe/",
+                pages: 106,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 41": {
+                base: "https://80pd.wowpic2.store/ii/bEqPbYfoMT0Gm1XkYiafrD5U0rURc/",
+                pages: 33,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 42": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoOT0GmznlMj6fhBpAzqUVf/",
+                pages: 80,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 43": {
+                base: "https://80pd.wowpic2.store/ii/bEqPbYfoPT0GmyXlGl6fhBpAzqkdf/",
+                pages: 87,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 44": {
+                base: "https://jdpw.wowpic3.store/ii/bEqPbYfoPT0Gm1HlKl6fhBpAzqkVe/",
+                pages: 72,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 45": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoKT0GmwHlZmKfhBpAzq0JV/",
+                pages: 94,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 46": {
+                base: "https://j24n.wowpic2.store/ii/bEqPbYfoOT0GmzHlQkKfhBpAzq0Va/",
+                pages: 94,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 47": {
+                base: "https://jloo.wowpic2.store/ii/bEqPbYfoPT0Gmw3lBjqfhBpAzq0pU/",
+                pages: 95,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 48": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoPT0Gm0XlHg6fhBpAzrERY/",
+                pages: 113,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 49": {
+                base: "https://80pd.wowpic4.store/ii/bEqPbYfoKT0GmlHlMjKfhBpAzrUJb/",
+                pages: 110,
+                ext: ".webp",
+                digits: 3,
+                skip: []
+              },
+        "Chapter 50": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoPT0GmxnkZmqfrD5U3rEJc/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 51": {
+                base: "https://jdpw.wowpic3.store/ii/bEqPbYfoMT0GmynlfgafrD5U3rEpV/",
+                pages: 32,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 52": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoMT0GmzHlGj6frD5U3rURV/",
+                pages: 33,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 53": {
+                base: "https://80pd.wowpic4.store/ii/bEqPbYfoPT0GmzXlDhqfrD5U3rkBU/",
+                pages: 32,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 54": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoMT0Gm2nlbkafrD5U3r0FY/",
+                pages: 34,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 55": {
+                base: "https://jdpw.wowpic4.store/ii/bEqPbYfoPT0Gm1nlHg6frD5U3oEFV/",
+                pages: 34,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 56": {
+                base: "https://ek10.wowpic2.store/ii/bEqPbYfoPT0GmyHlGhafrD5U3oUFd/",
+                pages: 33,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 57": {
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoKT0Gm2nlQg6frD5U2qEJa/",
+                pages: 39,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 58": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoKT0GmzHlGjqfrD5U2qEtY/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 59": {
+                base: "https://j24n.wowpic3.store/ii/bEqPbYfoOT0GmxXlYmKfrD5U2qkdc/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 60": {
+                base: "https://j24n.wowpic3.store/ii/bEqPbYfoMT0Gmw3kamafrD5U2q0FU/",
+                pages: 40,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 61": {
+                base: "https://ek10.wowpic3.store/ii/bEqPbYfoMT0GmznlOgqfrD5U2q0Rb/",
+                pages: 37,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 62": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoOT0Gm2nlclafrD5U2rEpc/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 63": {
+                base: "https://80pd.wowpic1.store/ii/bEqPbYfoMT0Gmx3ldiqfrD5U2rURY/",
+                pages: 41,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 64": {
+                base: "https://jdpw.wowpic4.store/ii/bEqPbYfoNT0Gm2HlEj6frD5U2rkVb/",
+                pages: 34,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 65": {
+                base: "https://ek10.wowpic5.store/ii/bEqPbYfoNT0GmkHlGmqfrD5U2r0Bf/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 66": {
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoMT0Gm2nlP06frD5U2oEZd/",
+                pages: 38,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 67": {
+                base: "https://ek10.wowpic5.store/ii/bEqPbYfoOT0Gm03lYkKfrD5U2oUdf/",
+                pages: 34,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 68": {
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoOT0Gm0Hlch6frD5U5qEJY/",
+                pages: 36,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 69": {
+                base: "https://ek10.wowpic2.store/ii/bEqPbYfoMT0GmynlZkafrD5U5qUNU/",
+                pages: 33,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 70": {
+                base: "https://j24n.wowpic4.store/ii/bEqPbYfoNT0Gm03kcj6frD5U5qUpY/",
+                pages: 35,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 71": {
+                base: "https://jloo.wowpic3.store/ii/bEqPbYfoNT0Gm0nkamafrD5U5qktc/",
+                pages: 36,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 72": {
+                base: "https://80pd.wowpic1.store/ii/bEqPbYfoPT0GmyHlLlqfrD5U5q0pc/",
+                pages: 36,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 73": {
+                base: "https://j24n.wowpic2.store/ii/bEqPbYfoKT0Gm03kZlKfrD5U5rERV/",
+                pages: 48,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 74": {
+                base: "https://jloo.wowpic1.store/ii/bEqPbYfoNT0GmxXkYgafrD5U5rUBe/",
+                pages: 32,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 75": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoMT0GmlXldkKfrD5U5rkdd/",
+                pages: 38,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 76": {
+                base: "https://jloo.wowpic1.store/ii/bEqPbYfoNT0GmkHlCl6frD5U5r0JV/",
+                pages: 36,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 77": {
+                base: "https://jdpw.wowpic4.store/ii/bEqPbYfoKT0GmyXlFmafrD5U5oEFU/",
+                pages: 40,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 78": {
+                base: "https://jloo.wowpic4.store/ii/bEqPbYfoKT0GmwHkQmafrD5U5oUJV/",
+                pages: 37,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 79": {
+                base: "https://80pd.wowpic3.store/ii/bEqPbYfoOT0Gm0HlfjafrD5U5oUZZ/",
+                pages: 36,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 80": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoMT0GmzXlRkafrD5U4qEVZ/",
+                pages: 39,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 81": {
+                base: "https://j24n.wowpic2.store/ii/bEqPbYfoPT0Gm03lHi6frD5U4qktY/",
+                pages: 56,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 82": {
+                base: "https://jloo.wowpic3.store/ii/bEqPbYfoOT0GmxHkel6frD5U4q0de/",
+                pages: 44,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 83": {
+                base: "https://jloo.wowpic2.store/ii/bEqPbYfoOT0Gm1HlalqfrD5U4rEFV/",
+                pages: 51,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 84": {
+                base: "https://jloo.wowpic1.store/ii/bEqPbYfoPT0GmkHlGlKfrD5U4rUNe/",
+                pages: 39,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 85": {
+                base: "https://jloo.wowpic3.store/ii/bEqPbYfoNT0Gml3lE0afrD5U4rkZU/",
+                pages: 53,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 86": {
+                base: "https://ek10.wowpic1.store/ii/bEqPbYfoPT0GmyHkd1afrD5U4r0Zd/",
+                pages: 54,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 87": {
+                base: "https://j24n.wowpic4.store/ii/bEqPbYfoOT0Gm2nlJiKfrD5U4oEtd/",
+                pages: 54,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 88": {
+                base: "https://j24n.wowpic3.store/ii/bEqPbYfoOT0Gmy3kYmqfrD5QxqEFd/",
+                pages: 63,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 89": {
+                base: "https://jdpw.wowpic2.store/ii/bEqPbYfoOT0GmxnlFjqfrD5QxqERU/",
+                pages: 62,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 90": {
+                base: "https://80pd.wowpic3.store/ii/bEqPbYfoOT0Gm1XlQhqfrD5QxqkBY/",
+                pages: 66,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 91": {
+                base: "https://j24n.wowpic5.store/ii/bEqPbYfoOT0Gmy3lLjqfrD5Qxr0Bf/",
+                pages: 73,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 92": {
+                base: "https://80pd.wowpic5.store/ii/bEqPbYfoOT0Gm2nlQk6frD5Qxqkta/",
+                pages: 66,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 93": {
+                base: "https://jdpw.wowpic1.store/ii/bEqPbYfoMT0Gm2HlF06frD5QxrENV/",
+                pages: 70,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 94": {
+                base: "https://jloo.wowpic3.store/ii/bEqPbYfoOT0GmxHlYiKfrD5QxrUFb/",
+                pages: 76,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
+        "Chapter 95": {
+                base: "https://jdpw.wowpic5.store/ii/bEqPbYfoKT0Gm0XlHiKfrD5QxrkFY/",
+                pages: 62,
+                ext: ".webp",
+                digits: 2,
+                skip: []
+              },
     };
 
     let chapterKeys = Object.keys(mangaConfig);
@@ -719,7 +722,7 @@
 
       for (let i = 1; i <= config.pages; i++) {
         
-        // --- OPTION 2 LOGIC: CHECK SKIP LIST ---
+        // --- OPTION  LOGIC: CHECK SKIP LIST ---
         if (config.skip && config.skip.includes(i)) {
           console.log(`Skipping page: ${i}`);
           continue; // This stops the loop for this number and moves to the next
